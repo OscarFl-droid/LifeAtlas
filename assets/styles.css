@@ -3,3 +3,22 @@
 @media(max-width:760px){.hero,.grid,.grid.two,.form-grid{grid-template-columns:1fr}.quick-grid{grid-template-columns:repeat(2,1fr)}main{padding:14px}.topbar{padding:13px 15px}.status-pill{display:none}.card{padding:18px}.hero-card{min-height:240px}.field.full{grid-column:auto}.atlas{height:390px}.atlas-wrap{min-height:400px}.event{grid-template-columns:auto 1fr}.event time{grid-column:2}.bottom-nav{bottom:8px}}
 .field-help{margin:8px 2px 0;color:#c7ddd5;font-size:13px;line-height:1.45}.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.capability-card{box-shadow:none}.cap-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.cap-head strong{font-size:34px}.capability-card p{color:#c6d9d2;line-height:1.45;margin-top:14px}.capability-card small{color:var(--muted)}.domain-title{margin:28px 0 10px;border-bottom:1px solid var(--line)}.gene{border-top:3px solid var(--mint)}.gene.harmful{border-top-color:var(--danger)}details summary{cursor:pointer;color:var(--muted);margin-top:12px}.quick-grid{grid-template-columns:repeat(3,1fr)}
 @media(max-width:760px){.cap-grid{grid-template-columns:1fr}.quick-grid{grid-template-columns:repeat(2,1fr)}.topbar{position:relative}.section-head h1{font-size:36px!important}.event{align-items:start}}
+
+/* v0.3.1 debugging and mobile hardening */
+html{min-height:100%;scroll-padding-top:86px;-webkit-text-size-adjust:100%}
+body{min-height:100%;padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+.topbar{padding-top:max(18px,env(safe-area-inset-top))}
+.bottom-nav{bottom:max(8px,env(safe-area-inset-bottom));padding-bottom:max(8px,env(safe-area-inset-bottom))}
+.app-shell{padding-bottom:calc(112px + env(safe-area-inset-bottom))}
+.event-actions{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.text-button{border:0;background:transparent;color:var(--mint);font-size:12px;font-weight:800;padding:4px;cursor:pointer}
+.text-button:focus-visible,.button:focus-visible,.bottom-nav button:focus-visible,.quick-log:focus-visible,.brand:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid #0b63b6;outline-offset:1px;border-color:var(--blue)}
+@media(max-width:760px){
+ html{scroll-padding-top:12px}
+ body{padding-top:env(safe-area-inset-top)}
+ .topbar{position:relative;padding-top:13px}
+ .event-actions{grid-column:2;align-items:flex-start;flex-direction:row;justify-content:space-between}
+ .bottom-nav{width:calc(100% - 20px)}
+ .brand strong{font-size:18px}.brand small{font-size:10px}
+}

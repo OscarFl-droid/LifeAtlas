@@ -1,6 +1,6 @@
-const STORAGE_KEY='lifeatlas.v0.2';
-const LEGACY_KEY='lifeatlas.v0.1';
-const VERSION=2;
+const STORAGE_KEY='lifeatlas.v0.3';
+const LEGACY_KEYS=['lifeatlas.v0.2','lifeatlas.v0.1'];
+const VERSION=3;
 const DAY=864e5;
 
 const capabilitySchema={
@@ -35,15 +35,24 @@ const careerEvents=[
 ];
 
 const outcomeMultipliers=[1.15,.7,.15,-.65];
-const defaultState=()=>({version:VERSION,profile:null,pack:'career',events:[],createdAt:new Date().toISOString(),settings:{reducedMotion:false},ace:{model:'ACE-0.2',baselineDate:new Date().toISOString()}});
+const riskOutcomeMultipliers=[.15,.45,.8,1.15];
+const riskEventIds=new Set(['overload_debt','avoidance_cost']);
+const defaultState=()=>({version:VERSION,profile:null,pack:'career',events:[],createdAt:new Date().toISOString(),settings:{reducedMotion:false},ace:{model:'ACE-0.3.1',baselineDate:new Date().toISOString()}});
 let state=load(); let route='today'; let installPrompt=null;
 
 function load(){
  try{
   const current=JSON.parse(localStorage.getItem(STORAGE_KEY));
   if(current)return {...defaultState(),...current,version:VERSION};
-  const legacy=JSON.parse(localStorage.getItem(LEGACY_KEY));
-  if(legacy){const migrated=defaultState();migrated.profile=legacy.profile||{name:'Explorer',goal:'Develop sustainably'};migrated.events=[];localStorage.setItem(STORAGE_KEY,JSON.stringify(migrated));return migrated}
+  for(const key of LEGACY_KEYS){
+   const legacy=JSON.parse(localStorage.getItem(key));
+   if(!legacy)continue;
+   const migrated={...defaultState(),...legacy,version:VERSION};
+   migrated.ace={...defaultState().ace,...(legacy.ace||{}),model:'ACE-0.3.1'};
+   migrated.events=Array.isArray(legacy.events)?legacy.events:[];
+   localStorage.setItem(STORAGE_KEY,JSON.stringify(migrated));
+   return migrated;
+  }
  }catch{}
  return defaultState();
 }
@@ -51,8 +60,10 @@ function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
 function uid(){return 'evt_'+Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
 function esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function clamp(v,min=0,max=100){return Math.max(min,Math.min(max,v))}
-function fmtDate(x){return new Intl.DateTimeFormat(undefined,{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(x))}
-function activeEvents(){const superseded=new Set(state.events.filter(e=>e.supersedes).map(e=>e.supersedes));return state.events.filter(e=>!superseded.has(e.id)&&!e.correction).sort((a,b)=>new Date(a.occurredAt)-new Date(b.occurredAt))}
+function fmtDate(x){const t=validDate(x);return t===null?'Invalid date':new Intl.DateTimeFormat(undefined,{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(t))}
+function validDate(x){const t=new Date(x).getTime();return Number.isFinite(t)?t:null}
+function activeEvents(){const source=Array.isArray(state.events)?state.events:[];const superseded=new Set(source.filter(e=>e&&e.supersedes).map(e=>e.supersedes));return source.filter(e=>e&&e.id&&!superseded.has(e.id)&&catalog(e.type)&&validDate(e.occurredAt)!==null).sort((a,b)=>validDate(a.occurredAt)-validDate(b.occurredAt))}
+function outcomeFactor(e){const i=Number.isInteger(e.outcomeIndex)?e.outcomeIndex:1;return (riskEventIds.has(e.type)?riskOutcomeMultipliers:outcomeMultipliers)[i]??.7}
 function catalog(id){return careerEvents.find(e=>e.id===id)}
 function status(score){return score>=76?'established':score>=62?'strengthening':score>=47?'developing':score>=33?'fragile':'depleted'}
 
@@ -63,7 +74,7 @@ function replay(until=Date.now()){
   const def=catalog(e.type); if(!def)continue;
   const age=Math.max(0,(until-new Date(e.occurredAt).getTime())/DAY);
   const intensity=.55+(Number(e.intensity||3)-1)*.225;
-  const outcome=Number.isInteger(e.outcomeIndex)?outcomeMultipliers[e.outcomeIndex]:.7;
+  const outcome=outcomeFactor(e);
   const evidenceQuality=(e.evidenceQuality||3)/3;
   for(const [cap,weight] of Object.entries(def.impacts)){
    const n=nodes[cap]; if(!n)continue;
@@ -86,12 +97,12 @@ function replay(until=Date.now()){
  const genes=detectGenes(events);
  const recent=events.filter(e=>until-new Date(e.occurredAt)<7*DAY);
  const prior=events.filter(e=>{const d=until-new Date(e.occurredAt);return d>=7*DAY&&d<14*DAY});
- const signal=x=>x.reduce((s,e)=>{const d=catalog(e.type);return s+Object.values(d?.impacts||{}).reduce((a,v)=>a+v,0)*(outcomeMultipliers[e.outcomeIndex]??.7)},0);
- return {nodes,events,genes,recent,momentum:Math.round((signal(recent)-signal(prior))*10)/10,recommendations:recommend(nodes,events,genes)};
+ const signal=x=>x.reduce((s,e)=>{const d=catalog(e.type);return s+Object.values(d?.impacts||{}).reduce((a,v)=>a+v,0)*outcomeFactor(e)},0);
+ return {nodes,events,genes,recent,momentum:Math.round((signal(recent)-signal(prior))*10)/10,recommendations:recommend(nodes,events,genes,until)};
 }
 
 function detectGenes(events){
- const genes=[]; const positive=e=>(outcomeMultipliers[e.outcomeIndex]??.7)>0;
+ const genes=[]; const positive=e=>!riskEventIds.has(e.type)&&outcomeFactor(e)>0;
  const sequences=[
   {id:'calibrated_delivery',name:'Calibrated delivery loop',steps:['commitment_closed','feedback_tested','failure_examined'],window:21,protects:['execution_reliability','reflective_calibration','learning_velocity']},
   {id:'sustainable_output',name:'Sustainable output cycle',steps:['priority_tradeoff','commitment_closed','recovery_restored'],window:14,protects:['strategic_judgement','execution_reliability','recovery_reserve']},
@@ -105,8 +116,8 @@ function detectGenes(events){
  return genes;
 }
 
-function recommend(nodes,events,genes){
- const rec=[];const last30=events.filter(e=>Date.now()-new Date(e.occurredAt)<30*DAY);const count=t=>last30.filter(e=>e.type===t).length;
+function recommend(nodes,events,genes,until=Date.now()){
+ const rec=[];const last30=events.filter(e=>until-validDate(e.occurredAt)<30*DAY);const count=t=>last30.filter(e=>e.type===t).length;
  if(count('commitment_closed')>=2&&count('feedback_tested')===0)rec.push({title:'Your delivery system is running open-loop',action:'Select one completed output and test it with a person able to detect a consequential blind spot.',why:'ACE found repeated completion evidence without a corresponding calibration event in the same 30-day window. This can strengthen throughput while leaving judgement error invisible.',confidence:'High',basis:'ACE sequence rule CA-04'});
  if(count('overload_debt')>=2&&count('strategic_refusal')===0)rec.push({title:'Workload debt is being absorbed rather than governed',action:'Renegotiate, refuse or explicitly deprioritise one demand before adding recovery tactics.',why:'Repeated overload evidence is present without boundary-setting evidence. Recovery alone cannot resolve a demand-capacity mismatch that remains structurally unchanged.',confidence:'High',basis:'ACE risk rule CA-11'});
  if(count('uncertain_decision')>=2&&count('failure_examined')===0&&count('feedback_tested')===0)rec.push({title:'Create a decision calibration record',action:'Revisit one recent decision: state the original assumptions, observed result and the decision rule you would reuse or change.',why:'Decision exposure is accumulating faster than reflective calibration. ACE therefore cannot distinguish genuine judgement improvement from repeated confidence.',confidence:'Moderate',basis:'ACE calibration rule CA-07'});
@@ -125,19 +136,31 @@ function today(){const d=replay();const ranked=Object.values(d.nodes).sort((a,b)
 function recCard(r){return `<article class="card recommendation"><span class="chip">${r.confidence} confidence</span><h3>${r.title}</h3><p>${r.action}</p><details><summary>Inspect inference</summary><div class="why">${r.why}<br><br><strong>Rule:</strong> ${r.basis}</div></details></article>`}
 function log(){const grouped=Object.groupBy?Object.groupBy(careerEvents,e=>e.group):careerEvents.reduce((a,e)=>((a[e.group]??=[]).push(e),a),{});return `<section class="section-head"><div><span class="eyebrow">Evidence, not activity</span><h1 style="font-size:42px">Record a consequential episode</h1><p class="lead">Describe an event capable of confirming or challenging a professional capability. Outcome quality matters more than frequency.</p></div></section><div class="card"><form id="eventForm"><div class="form-grid"><div class="field full"><label>Professional episode</label><select id="eventType">${Object.entries(grouped).map(([g,es])=>`<optgroup label="${g}">${es.map(e=>`<option value="${e.id}">${e.label}</option>`).join('')}</optgroup>`).join('')}</select><p id="eventPrompt" class="field-help"></p></div><div class="field"><label>When</label><input id="occurredAt" type="datetime-local" value="${new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,16)}"></div><div class="field"><label>Evidence confidence</label><select id="evidenceQuality"><option value="1">Tentative interpretation</option><option value="2">Some observable evidence</option><option value="3" selected>Clear observable evidence</option><option value="4">Externally verified</option></select></div><div class="field full"><label>Consequence / significance: <strong id="intensityOut">3</strong> of 5</label><div class="range-row"><span>Local</span><input id="intensity" type="range" min="1" max="5" value="3"><span>Systemic</span></div></div><div class="field"><label>Context that changed interpretation</label><select id="context"></select></div><div class="field"><label>Observed outcome</label><select id="outcome"></select></div><div class="field full"><label>Evidence note</label><textarea id="note" rows="4" maxlength="600" placeholder="What happened, what assumption was tested, and what changed afterward?"></textarea></div></div><div class="divider"></div><button class="button" type="submit">Commit evidence to replay log</button></form></div>`}
 function atlas(){const d=replay();const domains=['Direction','Delivery','Growth','Influence','Sustainability'];return `<section class="section-head"><div><span class="eyebrow">Adaptive Capability Engine</span><h1 style="font-size:42px">Career capability graph</h1><p class="lead">Scores are decayed, confidence-weighted estimates reconstructed from the event archive. Select a capability to inspect its strongest evidence.</p></div></section>${domains.map(domain=>`<section><div class="domain-title"><h2>${domain}</h2></div><div class="cap-grid">${Object.values(d.nodes).filter(n=>n.domain===domain).map(n=>`<article class="card capability-card" data-cap="${n.id}"><div class="cap-head"><div><span class="chip">${n.status}</span><h3>${n.label}</h3></div><strong>${Math.round(n.score)}</strong></div><div class="progress"><span style="width:${n.score}%"></span></div><p>${n.description}</p><small>${n.confidence}% inference confidence · ${n.evidence} evidence event${n.evidence===1?'':'s'}</small><details><summary>Strongest evidence</summary><div class="why">${n.contributions.slice(0,3).map(c=>`${catalog(c.type)?.label||c.type}: ${c.value>0?'+':''}${c.value.toFixed(1)}`).join('<br>')||'No direct evidence yet.'}</div></details></article>`).join('')}</div></section>`).join('')}`}
-function history(){const d=replay();return `<section class="section-head"><div><span class="eyebrow">Deterministic replay ledger</span><h1 style="font-size:42px">Evidence history</h1><p class="lead">The capability graph and Behaviour Genome are rebuilt from this additive record on every load.</p></div></section><div class="card">${d.events.length?`<div class="event-list">${[...d.events].reverse().map(e=>{const c=catalog(e.type);return `<div class="event"><div class="event-icon">${c?.icon||'•'}</div><div><strong>${c?.label||e.type}</strong><p>${esc(e.context||'No context')} · ${esc(c?.outcomes?.[e.outcomeIndex]||'Outcome unclassified')}${e.note?`<br>${esc(e.note)}`:''}</p></div><time>${fmtDate(e.occurredAt)}</time></div>`}).join('')}</div>`:`<div class="empty">No evidence yet. Record a consequential episode to initialise ACE.</div>`}</div>`}
-function settings(){return `<section class="section-head"><div><span class="eyebrow">Ownership and model transparency</span><h1 style="font-size:42px">Data and ACE controls</h1><p class="lead">This static build keeps the complete replay ledger in this browser and performs capability inference locally.</p></div></section><div class="grid two"><div class="card"><h2>Profile</h2><p><strong>${esc(state.profile.name)}</strong><br>${esc(state.profile.role||'General professional')}<br><span class="muted">${esc(state.profile.goal)}</span></p></div><div class="card"><h2>Backup and restore</h2><p class="muted">Export the complete event ledger, profile and ACE schema version.</p><div class="actions"><button id="exportBtn" class="button">Export JSON</button><label class="button secondary">Import JSON<input id="importInput" type="file" accept="application/json" hidden></label></div></div><div class="card"><h2>Model architecture</h2><p><strong>Model:</strong> ACE-0.2<br><strong>Capabilities:</strong> ${Object.keys(capabilitySchema).length}<br><strong>Replay:</strong> deterministic<br><strong>Decay:</strong> capability-specific half-life<br><strong>Interactions:</strong> directed graph<br><strong>Behaviour Genes:</strong> temporal motif detection</p></div><div class="card"><h2>Reset</h2><p class="muted">Erase all CareerAtlas information stored by this browser.</p><button id="resetBtn" class="button danger">Delete local Atlas</button></div></div>`}
+function history(){const d=replay();return `<section class="section-head"><div><span class="eyebrow">Deterministic replay ledger</span><h1 style="font-size:42px">Evidence history</h1><p class="lead">The capability graph and Behaviour Genome are rebuilt from this additive record on every load.</p></div></section><div class="card">${d.events.length?`<div class="event-list">${[...d.events].reverse().map(e=>{const c=catalog(e.type);return `<div class="event"><div class="event-icon">${c?.icon||'•'}</div><div><strong>${c?.label||e.type}</strong><p>${esc(e.context||'No context')} · ${esc(c?.outcomes?.[e.outcomeIndex]||'Outcome unclassified')}${e.note?`<br>${esc(e.note)}`:''}</p></div><div class="event-actions"><time>${fmtDate(e.occurredAt)}</time><button class="text-button" data-correct="${esc(e.id)}">Correct</button></div></div>`}).join('')}</div>`:`<div class="empty">No evidence yet. Record a consequential episode to initialise ACE.</div>`}</div>`}
+function settings(){return `<section class="section-head"><div><span class="eyebrow">Ownership and model transparency</span><h1 style="font-size:42px">Data and ACE controls</h1><p class="lead">This static build keeps the complete replay ledger in this browser and performs capability inference locally.</p></div></section><div class="grid two"><div class="card"><h2>Profile</h2><p><strong>${esc(state.profile.name)}</strong><br>${esc(state.profile.role||'General professional')}<br><span class="muted">${esc(state.profile.goal)}</span></p></div><div class="card"><h2>Backup and restore</h2><p class="muted">Export the complete event ledger, profile and ACE schema version.</p><div class="actions"><button id="exportBtn" class="button">Export JSON</button><label class="button secondary">Import JSON<input id="importInput" type="file" accept="application/json" hidden></label></div></div><div class="card"><h2>Model architecture</h2><p><strong>Model:</strong> ACE-0.3.1<br><strong>Capabilities:</strong> ${Object.keys(capabilitySchema).length}<br><strong>Replay:</strong> deterministic<br><strong>Decay:</strong> capability-specific half-life<br><strong>Interactions:</strong> directed graph<br><strong>Behaviour Genes:</strong> temporal motif detection</p></div><div class="card"><h2>Reset</h2><p class="muted">Erase all CareerAtlas information stored by this browser.</p><button id="resetBtn" class="button danger">Delete local Atlas</button></div></div>`}
 
-function addEvent(type,extra={}){const c=catalog(type);if(!c)return;state.events.push({id:uid(),type,occurredAt:extra.occurredAt||new Date().toISOString(),recordedAt:new Date().toISOString(),intensity:Number(extra.intensity||3),evidenceQuality:Number(extra.evidenceQuality||3),context:extra.context||'',outcomeIndex:Number(extra.outcomeIndex||0),note:extra.note||'',source:'manual',schemaVersion:VERSION});save();toast('Evidence committed to ACE replay')}
+function addEvent(type,extra={}){const c=catalog(type);const occurred=validDate(extra.occurredAt||new Date().toISOString());if(!c||occurred===null){toast('Please provide a valid event and date');return false}if(!Array.isArray(state.events))state.events=[];state.events.push({id:uid(),type,occurredAt:new Date(occurred).toISOString(),recordedAt:new Date().toISOString(),intensity:clamp(Number(extra.intensity||3),1,5),evidenceQuality:clamp(Number(extra.evidenceQuality||3),1,4),context:String(extra.context||''),outcomeIndex:clamp(Number(extra.outcomeIndex||0),0,3),note:String(extra.note||'').slice(0,600),source:'manual',schemaVersion:VERSION,...(extra.supersedes?{supersedes:extra.supersedes,correction:true}:{})});save();toast(extra.supersedes?'Correction appended to replay':'Evidence committed to ACE replay');return true}
 function bindCommon(){
  document.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>navigate(b.dataset.nav));
  document.querySelectorAll('[data-prefill]').forEach(b=>b.onclick=()=>{sessionStorage.setItem('careeratlas.prefill',b.dataset.prefill);navigate('log')});
- const form=document.querySelector('#eventForm');if(form){const type=document.querySelector('#eventType'),ctx=document.querySelector('#context'),out=document.querySelector('#outcome'),prompt=document.querySelector('#eventPrompt'),range=document.querySelector('#intensity');const refresh=()=>{const c=catalog(type.value);prompt.textContent=c.prompt;ctx.innerHTML=c.contexts.map(x=>`<option>${x}</option>`).join('');out.innerHTML=c.outcomes.map((x,i)=>`<option value="${i}">${x}</option>`).join('')};const pre=sessionStorage.getItem('careeratlas.prefill');if(pre){type.value=pre;sessionStorage.removeItem('careeratlas.prefill')}refresh();type.onchange=refresh;range.oninput=()=>document.querySelector('#intensityOut').textContent=range.value;form.onsubmit=e=>{e.preventDefault();addEvent(type.value,{occurredAt:new Date(document.querySelector('#occurredAt').value).toISOString(),intensity:range.value,evidenceQuality:document.querySelector('#evidenceQuality').value,context:ctx.value,outcomeIndex:Number(out.value),note:document.querySelector('#note').value});navigate('today')}}
+ const form=document.querySelector('#eventForm');if(form){
+  const type=document.querySelector('#eventType'),ctx=document.querySelector('#context'),out=document.querySelector('#outcome'),prompt=document.querySelector('#eventPrompt'),range=document.querySelector('#intensity'),dateInput=document.querySelector('#occurredAt'),quality=document.querySelector('#evidenceQuality'),note=document.querySelector('#note');
+  const correctionId=sessionStorage.getItem('careeratlas.correct');
+  const original=correctionId?state.events.find(e=>e.id===correctionId):null;
+  const refresh=()=>{const c=catalog(type.value);if(!c)return;prompt.textContent=c.prompt;ctx.innerHTML=c.contexts.map(x=>`<option>${x}</option>`).join('');out.innerHTML=c.outcomes.map((x,i)=>`<option value="${i}">${x}</option>`).join('')};
+  const pre=sessionStorage.getItem('careeratlas.prefill');if(pre&&catalog(pre)){type.value=pre;sessionStorage.removeItem('careeratlas.prefill')}
+  if(original&&catalog(original.type)){type.value=original.type}
+  refresh();
+  if(original){const local=new Date(validDate(original.occurredAt)-new Date().getTimezoneOffset()*60000).toISOString().slice(0,16);dateInput.value=local;range.value=original.intensity||3;quality.value=original.evidenceQuality||3;ctx.value=original.context||ctx.value;out.value=String(original.outcomeIndex??0);note.value=original.note||'';document.querySelector('#intensityOut').textContent=range.value;const submit=form.querySelector('button[type=submit]');submit.textContent='Append corrected evidence';}
+  type.onchange=refresh;range.oninput=()=>document.querySelector('#intensityOut').textContent=range.value;
+  form.onsubmit=e=>{e.preventDefault();const t=validDate(dateInput.value);if(t===null){toast('Enter a valid date and time');dateInput.focus();return}const ok=addEvent(type.value,{occurredAt:new Date(t).toISOString(),intensity:range.value,evidenceQuality:quality.value,context:ctx.value,outcomeIndex:Number(out.value),note:note.value,supersedes:original?.id});if(ok){sessionStorage.removeItem('careeratlas.correct');navigate('today')}}
+ }
+ document.querySelectorAll('[data-correct]').forEach(b=>b.onclick=()=>{sessionStorage.setItem('careeratlas.correct',b.dataset.correct);navigate('log')});
  const ex=document.querySelector('#exportBtn');if(ex)ex.onclick=()=>{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`careeratlas-ace-backup-${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href)};
- const im=document.querySelector('#importInput');if(im)im.onchange=async()=>{try{const x=JSON.parse(await im.files[0].text());if(!Array.isArray(x.events)||!x.profile)throw Error();state={...defaultState(),...x,version:VERSION};save();render();toast('Replay ledger restored')}catch{toast('Backup could not be validated')}};
+ const im=document.querySelector('#importInput');if(im)im.onchange=async()=>{try{const x=JSON.parse(await im.files[0].text());if(!Array.isArray(x.events)||!x.profile||typeof x.profile!=='object')throw Error();const cleanEvents=x.events.filter(e=>e&&e.id&&catalog(e.type)&&validDate(e.occurredAt)!==null);state={...defaultState(),...x,events:cleanEvents,settings:{...defaultState().settings,...(x.settings||{})},ace:{...defaultState().ace,...(x.ace||{}),model:'ACE-0.3.1'},version:VERSION};save();render();toast('Replay ledger restored')}catch{toast('Backup could not be validated')}};
  const reset=document.querySelector('#resetBtn');if(reset)reset.onclick=()=>{if(confirm('Delete all locally stored CareerAtlas data?')){localStorage.removeItem(STORAGE_KEY);state=defaultState();route='today';render()}}
 }
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;document.querySelector('#installBtn').hidden=false});
-document.querySelector('#installBtn').onclick=async()=>{if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;document.querySelector('#installBtn').hidden=true}};
-window.addEventListener('online',()=>document.querySelector('#offlineBadge').textContent='Local-first · online');window.addEventListener('offline',()=>document.querySelector('#offlineBadge').textContent='Offline ready');
+const installButton=document.querySelector('#installBtn');if(installButton)installButton.onclick=async()=>{if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;document.querySelector('#installBtn').hidden=true}};
+const setConnectivity=()=>{const b=document.querySelector('#offlineBadge');if(b)b.textContent=navigator.onLine?'Local-first · online':'Offline ready'};window.addEventListener('online',setConnectivity);window.addEventListener('offline',setConnectivity);setConnectivity();
 if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js');render();
