@@ -1,0 +1,43 @@
+{
+  "project_name": "Life Atlas",
+  "version": "continuation-package-v1",
+  "canonical_definition": "An offline-first, evidence-governed, longitudinal human-development platform that transforms years of behavioural history into an evolving, explainable map of health, psychological functioning, social capability, happiness, risk mitigation, professional development, purpose, and growth.",
+  "core_domains": [
+    "health",
+    "psychological_functioning",
+    "social_capability",
+    "happiness_and_flourishing",
+    "risk_mitigation",
+    "professional_development",
+    "purpose_and_growth"
+  ],
+  "core_mechanics": [
+    "event_history",
+    "sequence_memory",
+    "pattern_detection",
+    "temporary_states",
+    "threshold_unlocks",
+    "long_term_conditioning",
+    "dynamic_atlas",
+    "state_dependent_recommendations",
+    "explainability"
+  ],
+  "non_negotiables": [
+    "offline_first",
+    "multi_year_data_retention",
+    "user_controlled_export",
+    "evidence_governance",
+    "non_diagnostic_language",
+    "demographic_specific_visual_design",
+    "expert_rules_separate_from_personal_rules",
+    "deterministic_replay"
+  ],
+  "initial_poc_experiences": [
+    "personal_routine_and_recovery",
+    "professional_growth_and_career_readiness",
+    "study_consistency_and_overload"
+  ],
+  "specialist_verticals": [
+    "LabAtlas"
+  ]
+}
