@@ -1,10 +1,17 @@
 {
-  "name": "LifeAtlas",
-  "short_name": "LifeAtlas",
+  "name": "CareerAtlas \u2014 LifeAtlas ACE",
+  "short_name": "CareerAtlas",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#07110f",
   "theme_color": "#0d1f1b",
-  "description": "An offline-first longitudinal human-development platform.",
-  "icons": [{"src":"assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+  "description": "Local-first adaptive professional capability engine with deterministic replay.",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }

@@ -1,34 +1,23 @@
-# LifeAtlas v0.1 — GitHub Pages PWA
+# CareerAtlas v0.2 — LifeAtlas ACE Foundation
 
-A static, installable, offline-first proof of concept for LifeAtlas. No build step, server, account, analytics, or external API is required.
+A static, offline-first GitHub Pages application implementing the first Adaptive Capability Engine (ACE) baseline.
 
-## Run locally
+## Implemented
 
-```bash
-python3 -m http.server 8080
-```
+- Twelve-node CareerAtlas competency schema across Direction, Delivery, Growth, Influence and Sustainability.
+- Professional evidence events covering decisions, delivery, failure, feedback, leadership, coordination, boundaries, recovery and overload.
+- Outcome-, significance- and evidence-quality-weighted capability updates.
+- Capability-specific temporal decay and directed capability interactions.
+- Deterministic replay from an additive event ledger.
+- Behaviour Genome temporal motif detection.
+- Explainable recommendations and inspectable capability evidence.
+- Local JSON backup/restore and offline service worker.
+- Automatic migration of the v0.1 profile; generic v0.1 events are not imported because they do not contain sufficient ACE evidence semantics.
 
-Open `http://localhost:8080`.
+## Deploy
 
-## Deploy to GitHub Pages
+Upload all files to the root of a GitHub repository and enable GitHub Pages from the main branch/root directory. No build step is required.
 
-1. Create a repository and copy this directory into it.
-2. Commit and push to the `main` branch.
-3. In **Settings → Pages**, choose **Deploy from a branch**, `main`, `/ (root)`.
-4. Open the generated Pages URL. The app can then be installed as a PWA.
+## Cache update
 
-## Current capabilities
-
-- Three experience packs: routine and recovery, professional growth, study consistency.
-- Local event archive using browser storage.
-- Deterministic state reconstruction from event history.
-- Sequence-sensitive pattern rules.
-- Explainable recommendations with confidence and provenance.
-- Living Atlas capability map.
-- Corrections by additive superseding events.
-- JSON export/import and complete local reset.
-- Service-worker offline operation.
-
-## Important limitation
-
-This proof of concept uses `localStorage`, not encrypted IndexedDB. It is suitable for product demonstration and GitHub Pages validation, not sensitive production data.
+The service worker cache is `lifeatlas-v0.2.0`. Existing installed copies may require one reload after GitHub Pages finishes deploying.
