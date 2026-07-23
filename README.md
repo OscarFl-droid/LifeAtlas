@@ -1,4 +1,4 @@
-# CareerAtlas v0.2 — LifeAtlas ACE Foundation
+# CareerAtlas v0.3 — LifeAtlas ACE Full Rebuild
 
 A static, offline-first GitHub Pages application implementing the first Adaptive Capability Engine (ACE) baseline.
 
@@ -20,4 +20,8 @@ Upload all files to the root of a GitHub repository and enable GitHub Pages from
 
 ## Cache update
 
-The service worker cache is `lifeatlas-v0.2.0`. Existing installed copies may require one reload after GitHub Pages finishes deploying.
+The service worker cache is `lifeatlas-v0.3.0`. Existing installed copies may require one reload after GitHub Pages finishes deploying.
+
+## v0.3.1 debugging release
+
+This maintenance release corrects ACE risk-event polarity, so severe overload and avoidance outcomes can no longer increase capability scores. It also makes historical replay recommendations use the replay timestamp rather than the live clock, validates imported and manually entered dates, hardens malformed backup handling, implements additive event correction through supersession, improves iPhone safe-area layout, and prevents the service worker from returning HTML for missing JavaScript or stylesheet requests.
