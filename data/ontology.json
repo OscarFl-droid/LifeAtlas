@@ -1,0 +1,1786 @@
+{
+  "version": "0.1.0",
+  "title": "AHOS Core Dictionary",
+  "constructs": [
+    {
+      "id": "ahos.capacity.planning",
+      "name": "Planning",
+      "domain": "capacity",
+      "kind": "capacity",
+      "definition": "Ability to form a workable route from intention to action.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.capacity.task_decomposition",
+      "name": "Task decomposition",
+      "domain": "capacity",
+      "kind": "capacity",
+      "definition": "Ability to divide complex work into executable units.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.capacity.sustained_attention",
+      "name": "Sustained attention",
+      "domain": "capacity",
+      "kind": "capacity",
+      "definition": "Durable potential to maintain goal-relevant attention.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.capacity.prioritisation",
+      "name": "Prioritisation",
+      "domain": "capacity",
+      "kind": "capacity",
+      "definition": "Ability to rank competing actions against declared goals and constraints.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.capacity.learning",
+      "name": "Learning",
+      "domain": "capacity",
+      "kind": "capacity",
+      "definition": "Ability to acquire, retain and apply new knowledge or skill.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.capacity.communication",
+      "name": "Communication",
+      "domain": "capacity",
+      "kind": "capacity",
+      "definition": "Ability to convey, receive and negotiate meaning effectively.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.capacity.emotional_regulation",
+      "name": "Emotional regulation",
+      "domain": "capacity",
+      "kind": "capacity",
+      "definition": "Ability to modulate emotional responses in service of chosen action.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.capacity.self_monitoring",
+      "name": "Self-monitoring",
+      "domain": "capacity",
+      "kind": "capacity",
+      "definition": "Ability to observe and update one\u2019s own behaviour without conflating observation with judgement.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.capacity.recovery_management",
+      "name": "Recovery management",
+      "domain": "capacity",
+      "kind": "capacity",
+      "definition": "Ability to plan and enact restoration that supports later functioning.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.capacity.coordination_skill",
+      "name": "Coordination skill",
+      "domain": "capacity",
+      "kind": "capacity",
+      "definition": "Ability to sequence dependencies, people and resources across an action.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.accessibility.physical_readiness",
+      "name": "Physical readiness",
+      "domain": "accessibility",
+      "kind": "accessibility",
+      "definition": "Current deployability of physical capacity.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.accessibility.cognitive_clarity",
+      "name": "Cognitive clarity",
+      "domain": "accessibility",
+      "kind": "accessibility",
+      "definition": "Current subjective clarity for reasoning and decision-making.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.accessibility.attentional_availability",
+      "name": "Attentional availability",
+      "domain": "accessibility",
+      "kind": "accessibility",
+      "definition": "Current availability of attention after competing demands.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.accessibility.emotional_load",
+      "name": "Emotional load",
+      "domain": "accessibility",
+      "kind": "accessibility",
+      "definition": "Current emotional demand occupying deployable capacity.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.accessibility.restoration",
+      "name": "Restoration",
+      "domain": "accessibility",
+      "kind": "accessibility",
+      "definition": "Current subjective degree of recovery from sleep and rest.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.accessibility.recovery_reserve",
+      "name": "Recovery reserve",
+      "domain": "accessibility",
+      "kind": "accessibility",
+      "definition": "Current perceived buffer before further demand becomes unsustainable.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.accessibility.motivation_access",
+      "name": "Motivational accessibility",
+      "domain": "accessibility",
+      "kind": "accessibility",
+      "definition": "Current ease of mobilising action toward an endorsed goal.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.accessibility.social_availability",
+      "name": "Social availability",
+      "domain": "accessibility",
+      "kind": "accessibility",
+      "definition": "Current capacity available for interpersonal engagement.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.resource.discretionary_time",
+      "name": "Discretionary time",
+      "domain": "resource",
+      "kind": "resource",
+      "definition": "Time that can be allocated without displacing non-negotiable commitments.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.resource.energy",
+      "name": "Available energy",
+      "domain": "resource",
+      "kind": "resource",
+      "definition": "Subjective usable energy for action.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.resource.focus_time",
+      "name": "Protected focus time",
+      "domain": "resource",
+      "kind": "resource",
+      "definition": "Uninterrupted time suitable for concentrated action.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.resource.social_support",
+      "name": "Social support",
+      "domain": "resource",
+      "kind": "resource",
+      "definition": "Accessible practical or emotional support.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.resource.financial_flexibility",
+      "name": "Financial flexibility",
+      "domain": "resource",
+      "kind": "resource",
+      "definition": "Available financial room relevant to an action.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.resource.environment_access",
+      "name": "Environmental access",
+      "domain": "resource",
+      "kind": "resource",
+      "definition": "Access to a suitable place, tools or infrastructure.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.resource.recovery_opportunity",
+      "name": "Recovery opportunity",
+      "domain": "resource",
+      "kind": "resource",
+      "definition": "Available opportunity for restorative activity.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.resource.information_access",
+      "name": "Information access",
+      "domain": "resource",
+      "kind": "resource",
+      "definition": "Availability of information needed to proceed.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.resource.equipment_access",
+      "name": "Equipment access",
+      "domain": "resource",
+      "kind": "resource",
+      "definition": "Availability of required physical or digital tools.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.agency.importance",
+      "name": "Importance",
+      "domain": "agency",
+      "kind": "agency",
+      "definition": "Declared significance of an action or goal.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.agency.endorsement",
+      "name": "Personal endorsement",
+      "domain": "agency",
+      "kind": "agency",
+      "definition": "Degree to which the person personally supports the action.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.agency.intention",
+      "name": "Intention strength",
+      "domain": "agency",
+      "kind": "agency",
+      "definition": "Current commitment to attempt the action.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.agency.perceived_control",
+      "name": "Perceived control",
+      "domain": "agency",
+      "kind": "agency",
+      "definition": "Perceived ability to influence execution or outcome.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.agency.goal_conflict",
+      "name": "Goal conflict",
+      "domain": "agency",
+      "kind": "agency",
+      "definition": "Competition between concurrently valued goals.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.agency.coercion",
+      "name": "External pressure",
+      "domain": "agency",
+      "kind": "agency",
+      "definition": "Degree to which action is driven by external pressure rather than endorsement.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.agency.identity_alignment",
+      "name": "Identity alignment",
+      "domain": "agency",
+      "kind": "agency",
+      "definition": "Perceived fit between action and desired identity or role.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.coordination.next_step_clarity",
+      "name": "Next-step clarity",
+      "domain": "coordination",
+      "kind": "coordination",
+      "definition": "Clarity of the next observable executable action.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.coordination.dependency_readiness",
+      "name": "Dependency readiness",
+      "domain": "coordination",
+      "kind": "coordination",
+      "definition": "Degree to which prerequisites are available.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.coordination.sequence_clarity",
+      "name": "Sequence clarity",
+      "domain": "coordination",
+      "kind": "coordination",
+      "definition": "Clarity of ordering among action components.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.coordination.switching_burden",
+      "name": "Switching burden",
+      "domain": "coordination",
+      "kind": "coordination",
+      "definition": "Cost imposed by changing tasks, contexts or roles.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.coordination.interruption_exposure",
+      "name": "Interruption exposure",
+      "domain": "coordination",
+      "kind": "coordination",
+      "definition": "Likelihood and density of interruptions.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.coordination.plan_stability",
+      "name": "Plan stability",
+      "domain": "coordination",
+      "kind": "coordination",
+      "definition": "Likelihood the intended plan remains usable.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.coordination.social_coordination",
+      "name": "Social coordination",
+      "domain": "coordination",
+      "kind": "coordination",
+      "definition": "Alignment of timing, expectations and responsibilities with others.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.coordination.decision_load",
+      "name": "Decision load",
+      "domain": "coordination",
+      "kind": "coordination",
+      "definition": "Number and complexity of unresolved choices required to proceed.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.cost.time_cost",
+      "name": "Time cost",
+      "domain": "cost",
+      "kind": "cost",
+      "definition": "Time consumed by an action.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.cost.physical_effort",
+      "name": "Physical effort",
+      "domain": "cost",
+      "kind": "cost",
+      "definition": "Physical exertion required.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.cost.mental_effort",
+      "name": "Mental effort",
+      "domain": "cost",
+      "kind": "cost",
+      "definition": "Cognitive exertion required.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.cost.emotional_cost",
+      "name": "Emotional cost",
+      "domain": "cost",
+      "kind": "cost",
+      "definition": "Immediate emotional burden.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.cost.recovery_cost",
+      "name": "Recovery cost",
+      "domain": "cost",
+      "kind": "cost",
+      "definition": "Delayed restoration required after action.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.cost.social_cost",
+      "name": "Social cost",
+      "domain": "cost",
+      "kind": "cost",
+      "definition": "Burden imposed on relationships or social standing.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.cost.opportunity_cost",
+      "name": "Opportunity cost",
+      "domain": "cost",
+      "kind": "cost",
+      "definition": "Value of displaced alternatives.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.cost.financial_cost",
+      "name": "Financial cost",
+      "domain": "cost",
+      "kind": "cost",
+      "definition": "Money consumed or put at risk.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.cost.uncertainty_cost",
+      "name": "Uncertainty cost",
+      "domain": "cost",
+      "kind": "cost",
+      "definition": "Burden arising from unclear outcomes or requirements.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.context.home",
+      "name": "Home context",
+      "domain": "context",
+      "kind": "context",
+      "definition": "Action occurs in the participant\u2019s home context.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.context.workplace",
+      "name": "Workplace context",
+      "domain": "context",
+      "kind": "context",
+      "definition": "Action occurs in a primary or secondary workplace.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.context.commuting",
+      "name": "Commuting context",
+      "domain": "context",
+      "kind": "context",
+      "definition": "Action occurs during travel between places.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.context.outdoors",
+      "name": "Outdoor context",
+      "domain": "context",
+      "kind": "context",
+      "definition": "Action occurs outdoors.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.context.social_setting",
+      "name": "Social setting",
+      "domain": "context",
+      "kind": "context",
+      "definition": "Action occurs with or around other people.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.context.high_noise",
+      "name": "High-noise context",
+      "domain": "context",
+      "kind": "context",
+      "definition": "Environment contains substantial sensory or interruption noise.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.context.travel",
+      "name": "Travel context",
+      "domain": "context",
+      "kind": "context",
+      "definition": "Participant is away from usual routines or places.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.context.illness_context",
+      "name": "Illness context",
+      "domain": "context",
+      "kind": "context",
+      "definition": "Participant reports acute illness or recovery from illness; not a diagnosis.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.context.caregiving",
+      "name": "Caregiving context",
+      "domain": "context",
+      "kind": "context",
+      "definition": "Participant is responsible for another person during the period.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.context.deadline_pressure",
+      "name": "Deadline pressure",
+      "domain": "context",
+      "kind": "context",
+      "definition": "Time pressure is salient.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.context.novel_context",
+      "name": "Novel context",
+      "domain": "context",
+      "kind": "context",
+      "definition": "Conditions are unfamiliar or atypical.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.context.screen_dense",
+      "name": "Screen-dense context",
+      "domain": "context",
+      "kind": "context",
+      "definition": "Period contains sustained or fragmented screen interaction.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.outcome.initiation",
+      "name": "Initiation",
+      "domain": "outcome",
+      "kind": "outcome",
+      "definition": "Whether intended action began within the relevant window.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.outcome.persistence",
+      "name": "Persistence",
+      "domain": "outcome",
+      "kind": "outcome",
+      "definition": "Extent to which action continued despite friction.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.outcome.completion",
+      "name": "Completion",
+      "domain": "outcome",
+      "kind": "outcome",
+      "definition": "Extent to which the defined completion criterion was met.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.outcome.process_quality",
+      "name": "Process quality",
+      "domain": "outcome",
+      "kind": "outcome",
+      "definition": "Quality of execution under the person\u2019s control.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.outcome.external_outcome",
+      "name": "External outcome",
+      "domain": "outcome",
+      "kind": "outcome",
+      "definition": "Consequence influenced by action and external conditions.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.outcome.sustainability",
+      "name": "Sustainability",
+      "domain": "outcome",
+      "kind": "outcome",
+      "definition": "Whether the action pattern could reasonably be repeated.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.outcome.learning_gain",
+      "name": "Learning gain",
+      "domain": "outcome",
+      "kind": "outcome",
+      "definition": "Reported or evidenced durable learning from action.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.outcome.relationship_effect",
+      "name": "Relationship effect",
+      "domain": "outcome",
+      "kind": "outcome",
+      "definition": "Reported effect on an interpersonal relationship.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.outcome.recovery_effect",
+      "name": "Recovery effect",
+      "domain": "outcome",
+      "kind": "outcome",
+      "definition": "Reported effect on later restoration or reserve.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.uncertainty.measurement_uncertainty",
+      "name": "Measurement uncertainty",
+      "domain": "uncertainty",
+      "kind": "uncertainty",
+      "definition": "Uncertainty arising from observation quality.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.uncertainty.construct_uncertainty",
+      "name": "Construct uncertainty",
+      "domain": "uncertainty",
+      "kind": "uncertainty",
+      "definition": "Uncertainty about what construct an observation represents.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.uncertainty.state_uncertainty",
+      "name": "State uncertainty",
+      "domain": "uncertainty",
+      "kind": "uncertainty",
+      "definition": "Uncertainty about current latent state.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.uncertainty.parameter_uncertainty",
+      "name": "Parameter uncertainty",
+      "domain": "uncertainty",
+      "kind": "uncertainty",
+      "definition": "Uncertainty in model weights or thresholds.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.uncertainty.model_uncertainty",
+      "name": "Model uncertainty",
+      "domain": "uncertainty",
+      "kind": "uncertainty",
+      "definition": "Uncertainty about whether the model structure is adequate.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.uncertainty.prediction_uncertainty",
+      "name": "Prediction uncertainty",
+      "domain": "uncertainty",
+      "kind": "uncertainty",
+      "definition": "Uncertainty in a prospective prediction.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "ahos.uncertainty.external_uncertainty",
+      "name": "External uncertainty",
+      "domain": "uncertainty",
+      "kind": "uncertainty",
+      "definition": "Uncertainty arising from uncontrolled external factors.",
+      "timescale": "state",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "lifeatlas.module.professional",
+      "name": "Professional Atlas",
+      "domain": "professional",
+      "kind": "module",
+      "definition": "Integrated analytical view for Professional Atlas; not a separate data silo.",
+      "timescale": "longitudinal",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "lifeatlas.module.cognitive",
+      "name": "Cognitive Atlas",
+      "domain": "cognitive",
+      "kind": "module",
+      "definition": "Integrated analytical view for Cognitive Atlas; not a separate data silo.",
+      "timescale": "longitudinal",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "lifeatlas.module.physical",
+      "name": "Physical & Recovery Atlas",
+      "domain": "physical",
+      "kind": "module",
+      "definition": "Integrated analytical view for Physical & Recovery Atlas; not a separate data silo.",
+      "timescale": "longitudinal",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "lifeatlas.module.emotional",
+      "name": "Emotional & Wellbeing Atlas",
+      "domain": "emotional",
+      "kind": "module",
+      "definition": "Integrated analytical view for Emotional & Wellbeing Atlas; not a separate data silo.",
+      "timescale": "longitudinal",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "lifeatlas.module.social",
+      "name": "Social Atlas",
+      "domain": "social",
+      "kind": "module",
+      "definition": "Integrated analytical view for Social Atlas; not a separate data silo.",
+      "timescale": "longitudinal",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "lifeatlas.module.purpose",
+      "name": "Purpose & Values Atlas",
+      "domain": "purpose",
+      "kind": "module",
+      "definition": "Integrated analytical view for Purpose & Values Atlas; not a separate data silo.",
+      "timescale": "longitudinal",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "lifeatlas.module.learning",
+      "name": "Learning & Capability Atlas",
+      "domain": "learning",
+      "kind": "module",
+      "definition": "Integrated analytical view for Learning & Capability Atlas; not a separate data silo.",
+      "timescale": "longitudinal",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "lifeatlas.module.risk",
+      "name": "Risk & Resilience Atlas",
+      "domain": "risk",
+      "kind": "module",
+      "definition": "Integrated analytical view for Risk & Resilience Atlas; not a separate data silo.",
+      "timescale": "longitudinal",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "lifeatlas.module.household",
+      "name": "Household & Maintenance Atlas",
+      "domain": "household",
+      "kind": "module",
+      "definition": "Integrated analytical view for Household & Maintenance Atlas; not a separate data silo.",
+      "timescale": "longitudinal",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    },
+    {
+      "id": "lifeatlas.module.creative",
+      "name": "Recreation & Creativity Atlas",
+      "domain": "creative",
+      "kind": "module",
+      "definition": "Integrated analytical view for Recreation & Creativity Atlas; not a separate data silo.",
+      "timescale": "longitudinal",
+      "sources": [
+        "manual"
+      ],
+      "allowedInferences": [
+        "within-person descriptive hypothesis"
+      ],
+      "prohibitedInferences": [
+        "clinical diagnosis",
+        "employment or insurance decision"
+      ],
+      "version": "0.1.0",
+      "activePilot": true
+    }
+  ]
+}

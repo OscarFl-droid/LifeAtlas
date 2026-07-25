@@ -1,0 +1,165 @@
+{
+  "version": "0.1.0",
+  "daily": [
+    {
+      "id": "restoration",
+      "label": "How restored do you feel?",
+      "construct": "ahos.accessibility.restoration",
+      "type": "scale",
+      "min": 0,
+      "max": 4,
+      "anchors": [
+        "Very low",
+        "Low",
+        "Typical",
+        "High",
+        "Very high"
+      ]
+    },
+    {
+      "id": "physicalReadiness",
+      "label": "Physical readiness",
+      "construct": "ahos.accessibility.physical_readiness",
+      "type": "scale",
+      "min": 0,
+      "max": 4,
+      "anchors": [
+        "Very low",
+        "Low",
+        "Typical",
+        "High",
+        "Very high"
+      ]
+    },
+    {
+      "id": "cognitiveClarity",
+      "label": "Cognitive clarity",
+      "construct": "ahos.accessibility.cognitive_clarity",
+      "type": "scale",
+      "min": 0,
+      "max": 4,
+      "anchors": [
+        "Very low",
+        "Low",
+        "Typical",
+        "High",
+        "Very high"
+      ]
+    },
+    {
+      "id": "attention",
+      "label": "Attentional availability",
+      "construct": "ahos.accessibility.attentional_availability",
+      "type": "scale",
+      "min": 0,
+      "max": 4,
+      "anchors": [
+        "Very low",
+        "Low",
+        "Typical",
+        "High",
+        "Very high"
+      ]
+    },
+    {
+      "id": "emotionalLoad",
+      "label": "Emotional load",
+      "construct": "ahos.accessibility.emotional_load",
+      "type": "scale",
+      "min": 0,
+      "max": 4,
+      "anchors": [
+        "Very low",
+        "Low",
+        "Typical",
+        "High",
+        "Very high"
+      ]
+    },
+    {
+      "id": "recoveryReserve",
+      "label": "Recovery reserve",
+      "construct": "ahos.accessibility.recovery_reserve",
+      "type": "scale",
+      "min": 0,
+      "max": 4,
+      "anchors": [
+        "Very low",
+        "Low",
+        "Typical",
+        "High",
+        "Very high"
+      ]
+    }
+  ],
+  "actionPlan": [
+    {
+      "id": "importance",
+      "label": "How important is this?",
+      "type": "scale",
+      "min": 0,
+      "max": 4
+    },
+    {
+      "id": "endorsement",
+      "label": "How much do you personally endorse it?",
+      "type": "scale",
+      "min": 0,
+      "max": 4
+    },
+    {
+      "id": "control",
+      "label": "How much control do you have?",
+      "type": "scale",
+      "min": 0,
+      "max": 4
+    },
+    {
+      "id": "difficulty",
+      "label": "Expected difficulty",
+      "type": "scale",
+      "min": 0,
+      "max": 4
+    },
+    {
+      "id": "nextStep",
+      "label": "What is the next visible action?",
+      "type": "text"
+    }
+  ],
+  "actionReview": [
+    {
+      "id": "completion",
+      "label": "Completion",
+      "type": "scale",
+      "min": 0,
+      "max": 4
+    },
+    {
+      "id": "quality",
+      "label": "Process quality",
+      "type": "scale",
+      "min": 0,
+      "max": 4
+    },
+    {
+      "id": "effort",
+      "label": "Mental effort",
+      "type": "scale",
+      "min": 0,
+      "max": 4
+    },
+    {
+      "id": "recoveryCost",
+      "label": "Expected recovery cost",
+      "type": "scale",
+      "min": 0,
+      "max": 4
+    },
+    {
+      "id": "outcome",
+      "label": "What happened?",
+      "type": "text"
+    }
+  ]
+}
