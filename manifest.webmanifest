@@ -1,0 +1,17 @@
+{
+  "name": "LifeAtlas Phase 1",
+  "short_name": "LifeAtlas",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#071412",
+  "theme_color": "#112a28",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
