@@ -1,0 +1,152 @@
+{
+  "version": "0.1.0",
+  "templates": [
+    {
+      "id": "focused_work",
+      "name": "Focused work",
+      "modules": [
+        "professional",
+        "cognitive"
+      ],
+      "questions": [
+        "intendedResult",
+        "importance",
+        "endorsement",
+        "difficulty",
+        "control",
+        "nextStep",
+        "expectedCost"
+      ]
+    },
+    {
+      "id": "project_task",
+      "name": "Complex project task",
+      "modules": [
+        "professional",
+        "cognitive",
+        "purpose"
+      ],
+      "questions": [
+        "intendedResult",
+        "dependencies",
+        "sequenceClarity",
+        "difficulty",
+        "deadlinePressure"
+      ]
+    },
+    {
+      "id": "admin",
+      "name": "Administration or maintenance",
+      "modules": [
+        "professional",
+        "household"
+      ],
+      "questions": [
+        "intendedResult",
+        "timeWindow",
+        "switchingBurden"
+      ]
+    },
+    {
+      "id": "learning",
+      "name": "Learning or deliberate practice",
+      "modules": [
+        "learning",
+        "cognitive"
+      ],
+      "questions": [
+        "skillTarget",
+        "applicationPlan",
+        "difficulty"
+      ]
+    },
+    {
+      "id": "physical",
+      "name": "Exercise or physical activity",
+      "modules": [
+        "physical"
+      ],
+      "questions": [
+        "activity",
+        "intensity",
+        "expectedRecoveryCost"
+      ]
+    },
+    {
+      "id": "recovery",
+      "name": "Recovery activity",
+      "modules": [
+        "physical",
+        "emotional"
+      ],
+      "questions": [
+        "recoveryType",
+        "duration",
+        "expectedEffect"
+      ]
+    },
+    {
+      "id": "communication",
+      "name": "Important communication",
+      "modules": [
+        "social",
+        "professional"
+      ],
+      "questions": [
+        "personOrGroup",
+        "intendedResult",
+        "emotionalCost"
+      ]
+    },
+    {
+      "id": "relationship",
+      "name": "Relationship or social action",
+      "modules": [
+        "social",
+        "emotional"
+      ],
+      "questions": [
+        "intendedResult",
+        "importance",
+        "socialContext"
+      ]
+    },
+    {
+      "id": "organisation",
+      "name": "Personal organisation",
+      "modules": [
+        "household",
+        "cognitive"
+      ],
+      "questions": [
+        "intendedResult",
+        "dependencies"
+      ]
+    },
+    {
+      "id": "creative",
+      "name": "Recreation or creativity",
+      "modules": [
+        "creative",
+        "emotional"
+      ],
+      "questions": [
+        "activity",
+        "purpose",
+        "expectedEffect"
+      ]
+    },
+    {
+      "id": "unplanned",
+      "name": "Unplanned meaningful event",
+      "modules": [
+        "risk"
+      ],
+      "questions": [
+        "whatHappened",
+        "impact",
+        "context"
+      ]
+    }
+  ]
+}
